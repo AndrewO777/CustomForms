@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomForms.AddFormPage"
+             Title="AddFormPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <VerticalStackLayout BackgroundColor="{StaticResource Primary}">
+            <Button Text="Add Label" BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource Primary}"
+                    Clicked="AddLabelClicked"
+                    Margin="10,5"/>
+            <Button Text="Add Entry" BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource Primary}"
+                    Clicked="AddEntryClicked"
+                    Margin="10,5"/>
+            <Button Text="Add Textbox" BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource Primary}"
+                    Clicked="AddTextboxClicked"
+                    Margin="10,5"/>
+            <Button Text="Remove Last" BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource Primary}"
+                    Clicked="RemoveClicked"
+                    Margin="10,5"/>
+            <Button Text="Save Form" BackgroundColor="{StaticResource Secondary}"
+                    TextColor="{StaticResource Primary}"
+                    Clicked="SaveFormClicked"
+                    Margin="10,5"/>
+        </VerticalStackLayout>
+        <ScrollView Grid.Column="1">
+            <VerticalStackLayout Grid.Column="1"
+                             x:Name="previewSL">
+
+            </VerticalStackLayout>
+        </ScrollView>
+        <Frame Grid.ColumnSpan="2"
+               x:Name="addLabelFrame"
+               IsVisible="false"
+               BackgroundColor="{StaticResource Secondary}"
+               Margin="60,20,60,20">
+            <VerticalStackLayout>
+                <Label Text="What do you want the label to say?"
+                       TextColor="{StaticResource Primary}"/>
+                <Entry Placeholder="Your text here!"
+                       BackgroundColor="White"
+                       TextColor="{StaticResource Primary}"
+                       x:Name="labelTextEntry"/>
+                <Label Text="What do you want the size of your label to be?"
+                       TextColor="{StaticResource Primary}"/>
+                <Slider Minimum="5" Maximum="100"
+                        Value="20"
+                        ValueChanged="FontSizeChanged"
+                        x:Name="fontSizeSlider"/>
+                <Label Text="20"
+                       x:Name="fontSizeLbl"
+                       TextColor="{StaticResource Primary}"/>
+                <Label Text="Please put what you want your label to say in the entry, it cannot be empty."
+                       TextColor="Red"
+                       x:Name="addLabelErrorLbl"
+                       IsVisible="false"/>
+                <Button Text="Submit"
+                        Clicked="AddLabelSubmitClicked" Margin="10,5"
+                        BackgroundColor="{StaticResource Primary}"
+                    TextColor="{StaticResource Secondary}"/>
+                <Button Text="Cancel" Clicked="AddLabelClicked" BackgroundColor="{StaticResource Primary}"
+                    TextColor="{StaticResource Secondary}" Margin="10,5"/>
+            </VerticalStackLayout>
+        </Frame>
+        <Frame Grid.ColumnSpan="2"
+               x:Name="addFormFrame"
+               IsVisible="false"
+               BackgroundColor="{StaticResource Secondary}"
+               Margin="60,20,60,20">
+            <VerticalStackLayout>
+                <Label Text="What do you want to name this form?" TextColor="{StaticResource Primary}"/>
+                <Label Text="The name cannot be empty"
+                       TextColor="Red"
+                       IsVisible="false"
+                       x:Name="saveFormLblerr"/>
+                <Entry Placeholder="Form name"
+                       BackgroundColor="White"
+                       TextColor="{StaticResource Primary}"
+                       x:Name="formNameEntry"/>
+                <Button Text="Save"
+                        Clicked="SaveFormPopoverClicked" BackgroundColor="{StaticResource Primary}"
+                    TextColor="{StaticResource Secondary}"
+                        Margin="10,5"/>
+                <Button Text="Cancel"
+                        Margin="10,5" BackgroundColor="{StaticResource Primary}"
+                    TextColor="{StaticResource Secondary}"
+                        Clicked="SaveFormClicked"/>
+            </VerticalStackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
